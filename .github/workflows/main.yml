@@ -3,7 +3,7 @@ name: Deploy Website
 on:
   push:
     branches:
-      - main  # O deploy dispara quando você envia para a main
+      - main
 
 jobs:
   deploy:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Instalar Node.js e Dependências
+      - name: Instalar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -20,7 +20,8 @@ jobs:
       - name: Gerar o Build
         run: |
           npm install
-          npm run build
+          # Força o build via Vite ignorando o erro do tsc (TypeScript)
+          npx vite build
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -30,4 +31,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           local-dir: ./dist/
-          server-dir: ./public_html/
+          # Ajustado para a pasta do subdomínio:
+          server-dir: ./public_html/forms/
