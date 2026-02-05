@@ -31,5 +31,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           local-dir: ./dist/
-          # Ajustado para a pasta do subdomínio:
+         
           server-dir: ./public_html/forms/
