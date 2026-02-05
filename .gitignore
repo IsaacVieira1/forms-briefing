@@ -100,7 +100,7 @@ dist
 .fusebox/
 
 # Dynamically generated files
-*.d.ts
+# *.d.ts
 
 # Node Modules
 /node_modules
