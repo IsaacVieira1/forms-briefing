@@ -1,0 +1,33 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main  # O deploy dispara quando você envia para a main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js e Dependências
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Gerar o Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.braziliansoccerleadershipstyle.com
+          username: isaac@braziliansoccerleadershipstyle.com
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          local-dir: ./dist/
+          server-dir: ./public_html/
