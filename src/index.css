@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0A0A0B;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+/* Minimalist component utilities */
+@layer components {
+  .glass-panel {
+    @apply bg-zinc-900/80 backdrop-blur-xl border border-zinc-800 rounded-2xl;
+  }
+
+  .glass-input {
+    @apply bg-zinc-800/50 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-all duration-200;
+  }
+
+  .glass-input:focus {
+    border-color: rgb(59 130 246 / 0.5);
+    /* oi-primary with 0.5 opacity */
+    box-shadow: 0 0 0 1px rgb(59 130 246 / 0.3);
+    /* ring-1 with oi-primary with 0.3 opacity */
+  }
+
+  .btn {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn text-white hover:shadow-lg;
+    background-color: theme('colors.oi-primary');
+  }
+
+  .btn-primary:hover {
+    background-color: rgb(59 130 246 / 0.9);
+    /* Slightly transparent for subtle lightening */
+    box-shadow: 0 4px 12px -2px rgb(59 130 246 / 0.3);
+    /* Softer shadow */
+  }
+
+  .btn-ghost {
+    @apply btn bg-zinc-800/50 text-zinc-400 hover:bg-zinc-800 hover:text-white;
+  }
+}
