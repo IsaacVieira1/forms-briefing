@@ -643,8 +643,8 @@ export function Interface() {
     const uiMode = useVektorStore((state) => state.uiMode)
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center p-4 pointer-events-none z-10 overflow-y-auto">
-            <div className="pointer-events-auto my-auto py-8 w-full max-w-3xl">
+        <div className="fixed inset-0 flex flex-col p-4 z-10 overflow-y-auto">
+            <div className="m-auto py-8 w-full max-w-3xl">
                 <AnimatePresence mode="wait">
                     {uiMode === 'hero' && <HeroSection key="hero" />}
                     {uiMode === 'wizard' && <WizardForm key="wizard" />}
