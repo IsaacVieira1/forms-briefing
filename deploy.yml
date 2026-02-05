@@ -3,7 +3,7 @@ name: Deploy Website
 on:
   push:
     branches:
-      - main  # O deploy dispara quando você envia para a main
+      - main  
 
 jobs:
   deploy:
